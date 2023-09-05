@@ -7,5 +7,6 @@ FactoryBot.define do
     last_name { "Johnson" }
     display_name { "mike_johnson" }
     avatar_url { "http://image.com.br" }
+    location { "Regensburg" }
   end
 end
