@@ -8,7 +8,10 @@ class TeamsController < ApplicationController
   def show
     team = Team.find_by(id: params[:id])
 
-    return render json: { error: "Team not found" }, status: :not_found unless team
+    return error_response(
+      message: "Team not found",
+      status: :not_found
+    ) unless team
 
     render json: { team: serialize_team(team) }, status: :ok
   end
