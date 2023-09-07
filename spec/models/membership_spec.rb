@@ -17,6 +17,22 @@ RSpec.describe Membership, type: :model do
     expect(membership.member).to eql member
   end
 
+  it "duplicates aren't possible" do
+    dev_role = Role.create(name: "Developer")
+
+    Membership.create(
+      team: team,
+      member: member
+    )
+
+    Membership.create(
+      team: team,
+      member: member
+    )
+
+    expect(Membership.count).to eql 1
+  end
+
   it "save default role when no role is given" do
     dev_role = Role.create(name: "Developer")
 
